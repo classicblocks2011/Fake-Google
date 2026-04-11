@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Google</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #202124;
+  color: #e8eaed;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 15px;
+}
+
+.header a {
+  color: #e8eaed;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.header button {
+  background: #8ab4f8;
+  color: #202124;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background: #aecbfa;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 72px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  letter-spacing: -2px;
+}
+
+.logo span:nth-child(1){color:#4285f4;}
+.logo span:nth-child(2){color:#ea4335;}
+.logo span:nth-child(3){color:#fbbc05;}
+.logo span:nth-child(4){color:#4285f4;}
+.logo span:nth-child(5){color:#34a853;}
+.logo span:nth-child(6){color:#ea4335;}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 24px;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 584px;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #202124;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
+}
+
+.buttons button {
+  background: #303134;
+  color: #e8eaed;
+  border: 1px solid #303134;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  border-color: #5f6368;
+}
+
+/* FOOTER */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: #9aa0a6;
+}
+
+.footer a {
+  color: #9aa0a6;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* OVERLAY */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ff00;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  z-index: 9999;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <a href="#">Gmail</a>
+  <a href="#">Imágenes</a>
+  <button>Acceder</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="logo">
+    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+  </div>
+
+  <div class="search-box">
+    <input id="searchQuery" placeholder="Busca en Google o escribe una URL">
+  </div>
+
+  <div class="buttons">
+    <button onclick="search()">Buscar con Google</button>
+    <button onclick="lucky()">Me siento con suerte</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <a href="#">Sobre Google</a>
+    <a href="#">Publicidad</a>
+    <a href="#">Negocios</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Condiciones</a>
+  </div>
+  <div>
+    <a href="#">Herramientas</a>
+  </div>
+</div>
+
+<!-- OVERLAY ARG -->
+<div id="overlay"></div>
+
+<script>
+
+/* =========================
+   🔐 MOTOR ARG 3301
+========================= */
+
+function transform(input, seed){
+  input = input.toLowerCase().trim()
+
+  let out = ""
+  for(let i=0;i<input.length;i++){
+    let c = input.charCodeAt(i)
+    c = c + ((i+1)*seed % 7) - (seed % 3)
+    out += String.fromCharCode(c)
+  }
+
+  return btoa(out.split('').reverse().join(''))
+}
+
+/* =========================
+   💀 80 CAPAS REALES
+========================= */
+
+const layers = [
+["the void",1],
+["what is real",2],
+["this is not real",3],
+["hidden truth",4],
+["deeper layer",5],
+["london signal",6],
+["binary start",7],
+["time loop",8],
+["no escape",9],
+["observe system",10],
+
+["hello world",11],
+["hi",12],
+["goodbye",13],
+["test",14],
+["decode",15],
+["code reverse",16],
+["ascii chain",17],
+["rot signal",18],
+["hex win",19],
+["base system",20],
+
+["math gate",21],
+["square root",22],
+["log entry",23],
+["factorial",24],
+["growth",25],
+["binary shift",26],
+["fibonacci",27],
+["prime lock",28],
+["circle ratio",29],
+["modulo",30],
+
+["keyboard silence",31],
+["time flow",32],
+["echo",33],
+["rain",34],
+["crystal",35],
+["ton",36],
+["map",37],
+["towel",38],
+["barber",39],
+["clock",40],
+
+["good reverse",41],
+["hello hex",42],
+["binary a",43],
+["rot test",44],
+["caesar",45],
+["unicode",46],
+["json",47],
+["mirror",48],
+["level",49],
+["code",50],
+
+["console",51],
+["source",52],
+["pattern",53],
+["image",54],
+["sound",55],
+["xor",56],
+["twice",57],
+["shift",58],
+["key",59],
+["truth",60],
+
+["144",61],
+["81",62],
+["25",63],
+["16",64],
+["2",65],
+["32",66],
+["key",67],
+["xor",68],
+["chain",69],
+["lock",70],
+
+["169",71],
+["12",72],
+["42",73],
+["255",74],
+["true",75],
+["32",76],
+["720",77],
+["1.61",78],
+["5050",79],
+
+["3301",80]
+]
+
+let current = 0
+
+function search(){
+  let q=document.getElementById("searchQuery").value.trim().toLowerCase()
+
+  if(q==="3301"){
+    start()
+    return
+  }
+
+  window.location.href="https://google.com/search?q="+encodeURIComponent(q)
+}
+
+function lucky(){
+  alert("No hay suerte esta vez...")
+}
+
+/* =========================
+   💀 ARG SYSTEM
+========================= */
+
+function start(){
+  document.getElementById("overlay").style.display="flex"
+  show()
+}
+
+function show(){
+  document.getElementById("overlay").innerHTML=`
+    <h2>Layer ${current+1}/80</h2>
+    <p>${layers[current][0]}</p>
+    <input id="ans">
+    <button onclick="check()">OK</button>
+  `
+}
+
+function check(){
+  let input=document.getElementById("ans").value
+  let seed=current+1
+  let target=transform(layers[current][0],seed)
+
+  if(transform(input,seed)===target){
+    current++
+    if(current>=layers.length){
+      win()
+    } else {
+      show()
+    }
+  } else alert("incorrect")
+}
+
+function win(){
+  document.getElementById("overlay").innerHTML=`
+    <h1>ACCESS GRANTED</h1>
+    <p>3301</p>
+  `
+}
+
+console.log("deeper_than_code")
+console.log("nothing_is_random")
+
+</script>
+
+</body>
+  </html>
