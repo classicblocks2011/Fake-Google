@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Google</title>
+<style>
+body{margin:0;font-family:Arial;background:#202124;color:#e8eaed;}
+.main{height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;}
+.search-box{background:#fff;padding:10px;border-radius:24px;width:500px;}
+.search-box input{width:100%;border:none;outline:none;}
+.game{background:black;color:#00ff00;height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;font-family:monospace;text-align:center;}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+<h1>Google</h1>
+<div class="search-box">
+<input id="q">
+</div>
+<button onclick="startCheck()">Buscar</button>
+</div>
+
+<script>
+
+/* =========================
+   🔐 ENGINE ARG 3301
+========================= */
+
+// transformación única por capa
+function transform(input, seed){
+  input = input.toLowerCase().trim()
+
+  let out = ""
+  for(let i=0;i<input.length;i++){
+    let c = input.charCodeAt(i)
+    c = c + ((i+1)*seed % 7) - (seed % 3)
+    out += String.fromCharCode(c)
+  }
+
+  return btoa(out.split('').reverse().join(''))
+}
+
+// validación
+function check(input, target, seed){
+  return transform(input,seed) === target
+}
+
+/* =========================
+   💀 80 CAPAS (SIN REPETIR LÓGICA)
+========================= */
+
+const layers = [
+/* 🔹 10 ORIGINALES (adaptadas) */
+["7468655f766f6964","the_void",1],
+["d2hhdF9pc19yZWFs","what_is_real",2],
+["laer_si_siht","this_is_real",3],
+["wklv_lv_qrw_uhdo","this_is_not_real",4],
+["hidden_truth","hidden_truth",5],
+["deeper_than_code","deeper_than_code",6],
+["51.5074, 0.1278","london",7],
+["2,4,8,16,?","32",8],
+["maybe this is not the end","time",9],
+["current hour","time",10],
+
+/* 🔥 CRIPTO */
+["SGVsbG8=","hello",11],
+["01101000 01101001","hi",12],
+["68656c6c6f","hello",13],
+["uryyb","hello",14],
+["khoor","hello",15],
+["Z29vZGJ5ZQ==","goodbye",16],
+["hex 77696e","win",17],
+["ascii 116101115116","test",18],
+["ROT13 grfg","test",19],
+["reverse edoc","code",20],
+
+/* 🔥 MATEMÁTICA */
+["5^3","125",21],
+["sqrt144","12",22],
+["log1000","3",23],
+["7!","5040",24],
+["12*12+1","145",25],
+["2^8","256",26],
+["fib 7","13",27],
+["prime after 100","101",28],
+["9^3","729",29],
+["15%4","3",30],
+
+/* 🔥 LÓGICA */
+["i have keys but no locks","keyboard",31],
+["i travel but never move","time",32],
+["i speak without mouth","echo",33],
+["i fall but never rise","rain",34],
+["i grow but am not alive","crystal",35],
+["forward i am heavy","ton",36],
+["i have cities but no houses","map",37],
+["i get wetter drying","towel",38],
+["i shave every day","barber",39],
+["i have hands but no clap","clock",40],
+
+/* 🔥 CRIPTO AVANZADA */
+["base64 reverse doog","good",41],
+["hex 68656c6c6f","hello",42],
+["binary 01100001","a",43],
+["rot13 + reverse","test",44],
+["caesar +2 jgnnq","hello",45],
+["unicode 0062","b",46],
+["json x=5","5",47],
+["mirror racecar","racecar",48],
+["palindrome level","level",49],
+["double code reverse","code",50],
+
+/* 🔥 ARG LAYER */
+["inspect console","deeper",51],
+["view source","hidden",52],
+["pattern not random","random",53],
+["image clue","image",54],
+["sound clue","sound",55],
+["xor layer","xor",56],
+["decode twice","twice",57],
+["shift pattern","shift",58],
+["layer 70 key","key",59],
+["truth hidden","truth",60],
+
+/* 🔥 HARD */
+["12*12","144",61],
+["9^2","81",62],
+["100/4","25",63],
+["sqrt256","16",64],
+["log100","2",65],
+["binary 100000","32",66],
+["ascii key","key",67],
+["xor mystery","xor",68],
+["reverse chain","chain",69],
+["pattern lock","lock",70],
+
+/* 💀 FINAL ARC */
+["13*13","169",71],
+["144/12","12",72],
+["binary 101010","42",73],
+["hex ff","255",74],
+["prime 97","true",75],
+["sqrt1024","32",76],
+["factorial 6","720",77],
+["golden ratio","1.61",78],
+["sum 1-100","5050",79],
+
+/* 💀 FINAL */
+["reverse 1033","3301",80]
+]
+
+/* =========================
+   🧠 GAME ENGINE
+========================= */
+
+let current = 0
+
+function startCheck(){
+  let q=document.getElementById("q").value.toLowerCase().trim()
+  if(q==="3301") start()
+  else location.href="https://google.com/search?q="+q
+}
+
+function start(){
+  document.body.innerHTML=""
+  show()
+}
+
+function show(){
+  document.body.innerHTML=`
+  <div class="game">
+    <h2>Layer ${current+1}/80</h2>
+    <p>${layers[current][0]}</p>
+    <input id="a">
+    <button onclick="check()">OK</button>
+  </div>`
+}
+
+function check(){
+  let input=document.getElementById("a").value
+
+  let hint = layers[current][0]
+  let seed = layers[current][2]
+
+  if(check(input,hint,seed)){
+    current++
+    if(current>=layers.length) end()
+    else show()
+  } else alert("incorrect")
+}
+
+function end(){
+  document.body.innerHTML=`
+  <div class="game">
+    <h1>ACCESS GRANTED</h1>
+    <p>3301</p>
+  </div>`
+}
+
+console.log("deeper_than_code")
+console.log("nothing_is_random")
+console.log("you_are_watched")
+
+</script>
+
+</body>
+</html>
